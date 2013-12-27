@@ -1,0 +1,5 @@
+E:\Projects\网上图书商城\WebServiceApp\bin\WebServiceApp.dll
+E:\Projects\网上图书商城\WebServiceApp\bin\WebServiceApp.pdb
+E:\Projects\网上图书商城\WebServiceApp\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\网上图书商城\WebServiceApp\obj\Debug\WebServiceApp.dll
+E:\Projects\网上图书商城\WebServiceApp\obj\Debug\WebServiceApp.pdb

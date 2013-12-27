@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>XML及其在电子商务中的应用</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592"
+        name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/Css/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
+    <script src="/js/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComments();
+
+            $('#btnSubComment').click(function () {
+                addComment();
+            });
+        });
+
+        function addComment() {
+            if ($('#txtComment').val() != '') {
+                var comment = $('#txtComment').val();
+                $.post("/ashx/BookComment.ashx", { action: 'add', comment: comment, bookId: 5541 }, function (data) {
+                    if (data == "yes") {
+                        $('#msg').text('发表评论成功！').css('color', 'blue');
+                        $('#txtComment').val('');
+                        loadComments();
+                    }
+                    else {
+                        $('#msg').text('发表评论失败！').css('color', 'red');
+                    }
+                });
+            }
+            else {
+                $('#msg').text('评论内容不能为空！').css('color', 'red');
+            }
+        }
+
+        function loadComments() {
+            $.post("/ashx/BookComment.ashx", { action: 'load', bookId: 5541 }, function (data) {
+                $('#comments').html('');
+                var list = $.parseJSON(data);
+                if (list.length > 0) {
+                    $('<strong>评论列表：</strong>').appendTo('#comments');
+                    $('<hr color="black" />').appendTo('#comments');
+                    for (var i = 0; i < list.length; i++) {
+                        $('<div>#' + (i + 1) + '楼 ' + list[i].CreateDateTime + ' 评论：</div>').appendTo('#comments');
+                        $('<div style="margin:5px auto;">' + list[i].Msg + '</div>').appendTo('#comments');
+                        $('<hr color="#F5983E" noshade="noshade"/>').appendTo('#comments');
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 750px; height: 27px;">
+                <span class="l"><a href="javascript:void(0)" onclick="window.external.addFavorite('http://localhost:12358/BookList.aspx','网上图书商城')">
+                    收藏本站</a></span> <span class="r">您好！欢迎来到网上图书商城！&nbsp; <a href="/Member/login.aspx">[登录]</a>&nbsp;
+                        <a href="/Member/register.aspx">[免费注册]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/OrderInfo.aspx">我的订单</a>
+                    </span>
+            </div>
+        </div>
+        <div style="width: 750px;">
+            <img src="/images/集团网站1.jpg" width="750px" height="93" /></div>
+        <div id="tabsI" style="width: 750px; height: 32px">
+            <ul>
+                <!-- CSS Tabs -->
+                <li><a href="/booklist.aspx"><span>首页</span></a></li>
+                <li><a href="/booklist.aspx"><span>推荐图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>最新图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>热门图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的购物车</span></a></li>
+                <li><a href="/booklist.aspx"><span>购书流程</span></a></li>
+                <li><a href="/booklist.aspx"><span>网站留言</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的留言</span></a></li>
+            </ul>
+        </div>
+        <div id="main_box" style="position: relative; margin-top: 20px; margin-bottom: 20px;
+            margin-left: auto; margin-right: auto; width: 750px;">
+            <table border="1" width="750px" style="border-collapse: collapse;margin-bottom:10px;">
+                <tr>
+                    <td style="width: 10%;">
+                        书名：
+                    </td>
+                    <td style="width: 70%;">
+                        XML及其在电子商务中的应用
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        作者：
+                    </td>
+                    <td>
+                        方美琪  编著
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        封面：
+                    </td>
+                    <td>
+                        <img src="/images/BookCovers/9787302068129.jpg" alt="封面" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        出版日期：
+                    </td>
+                    <td>
+                        2003-08-01
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价格：
+                    </td>
+                    <td>
+                        16.00
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td style="text-align: left;">
+                        本书的第一部分介绍了XML的相关技术，包括基础技术和高级技术，由XML的基础语法到Java的DOM编程，由XML DTD到XSL技术，用大量实例深入浅出地介绍了XML的应用技术。<br>    第二部分着重介绍了XML在电子商务中的应用，尤其就基于XML的电子商务模型和电子商务中的XML标准问题进行了深入的介绍，并以大量现实中的实例来分析说明。<br>    本书是《本科电子商务系列教材》丛书之一，适合作为学习XML技术的编程与技术人员的教材，也适合关心XML的宏观概况的管理与组织人员使用。
+                    </td>
+                </tr>
+            </table>
+            
+                <a href="/Member/Cart.aspx?id=5541">
+                    <img border="0" src="/Images/sale.gif" alt="购买" /></a>
+        </div>
+        <div id="comments" style="width: 750px; text-align: left;">
+        </div>
+        <div style="width: 750px; text-align: left;">
+            <p>
+                评论内容：
+            </p>
+            <textarea cols="60" rows="10" id="txtComment"></textarea>
+            <p>
+                <input type="button" value="提交评论" id="btnSubComment" />&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    id="msg"></span></p>
+        </div>
+        <div id="footer" style="clear: both; position: relative; bottom: 0px">
+            <table border="0" width="100%" class="categories1">
+                <tr>
+                    <td align="center">
+                        <ul>
+                            <li><a href='#'>关于我们王府井书店><a href='#'>关于我们王府井书店</li>
+                            <li><a href="#">书店营业时间：9：30-21：00 </a></li>
+                            <li><a href="#" target="_blank">
+                                <img src="/images/logo123x40.jpg" width="123" height="40" border="0">
+                            </a><a href="#" target="_blank">
+                                <img border="0" src="/Images/kaixin.jpg">
+                            </a></li>
+                            <li>&nbsp;<span lang="zh-cn"><a title="京ICP备08001692号" href="http://www.miibeian.gov.cn">京ICP备08987373号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

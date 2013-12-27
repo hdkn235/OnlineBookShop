@@ -1,0 +1,7 @@
+E:\Projects\网上图书商城\DBUtility\bin\Debug\BookShop.DBUtility.dll
+E:\Projects\网上图书商城\DBUtility\bin\Debug\BookShop.DBUtility.pdb
+E:\Projects\网上图书商城\DBUtility\bin\Debug\MySql.Data.dll
+E:\Projects\网上图书商城\DBUtility\bin\Debug\System.Data.SQLite.DLL
+E:\Projects\网上图书商城\DBUtility\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\网上图书商城\DBUtility\obj\Debug\BookShop.DBUtility.dll
+E:\Projects\网上图书商城\DBUtility\obj\Debug\BookShop.DBUtility.pdb

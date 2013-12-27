@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Visual Basic 2005大学教程（第3版）/国外计算机科学经典教材</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592"
+        name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/Css/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
+    <script src="/js/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComments();
+
+            $('#btnSubComment').click(function () {
+                addComment();
+            });
+        });
+
+        function addComment() {
+            if ($('#txtComment').val() != '') {
+                var comment = $('#txtComment').val();
+                $.post("/ashx/BookComment.ashx", { action: 'add', comment: comment, bookId: 5954 }, function (data) {
+                    if (data == "yes") {
+                        $('#msg').text('发表评论成功！').css('color', 'blue');
+                        $('#txtComment').val('');
+                        loadComments();
+                    }
+                    else {
+                        $('#msg').text('发表评论失败！').css('color', 'red');
+                    }
+                });
+            }
+            else {
+                $('#msg').text('评论内容不能为空！').css('color', 'red');
+            }
+        }
+
+        function loadComments() {
+            $.post("/ashx/BookComment.ashx", { action: 'load', bookId: 5954 }, function (data) {
+                $('#comments').html('');
+                var list = $.parseJSON(data);
+                if (list.length > 0) {
+                    $('<strong>评论列表：</strong>').appendTo('#comments');
+                    $('<hr color="black" />').appendTo('#comments');
+                    for (var i = 0; i < list.length; i++) {
+                        $('<div>#' + (i + 1) + '楼 ' + list[i].CreateDateTime + ' 评论：</div>').appendTo('#comments');
+                        $('<div style="margin:5px auto;">' + list[i].Msg + '</div>').appendTo('#comments');
+                        $('<hr color="#F5983E" noshade="noshade"/>').appendTo('#comments');
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 750px; height: 27px;">
+                <span class="l"><a href="javascript:void(0)" onclick="window.external.addFavorite('http://localhost:12358/BookList.aspx','网上图书商城')">
+                    收藏本站</a></span> <span class="r">您好！欢迎来到网上图书商城！&nbsp; <a href="/Member/login.aspx">[登录]</a>&nbsp;
+                        <a href="/Member/register.aspx">[免费注册]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/OrderInfo.aspx">我的订单</a>
+                    </span>
+            </div>
+        </div>
+        <div style="width: 750px;">
+            <img src="/images/集团网站1.jpg" width="750px" height="93" /></div>
+        <div id="tabsI" style="width: 750px; height: 32px">
+            <ul>
+                <!-- CSS Tabs -->
+                <li><a href="/booklist.aspx"><span>首页</span></a></li>
+                <li><a href="/booklist.aspx"><span>推荐图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>最新图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>热门图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的购物车</span></a></li>
+                <li><a href="/booklist.aspx"><span>购书流程</span></a></li>
+                <li><a href="/booklist.aspx"><span>网站留言</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的留言</span></a></li>
+            </ul>
+        </div>
+        <div id="main_box" style="position: relative; margin-top: 20px; margin-bottom: 20px;
+            margin-left: auto; margin-right: auto; width: 750px;">
+            <table border="1" width="750px" style="border-collapse: collapse;margin-bottom:10px;">
+                <tr>
+                    <td style="width: 10%;">
+                        书名：
+                    </td>
+                    <td style="width: 70%;">
+                        Visual Basic 2005大学教程（第3版）/国外计算机科学经典教材
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        作者：
+                    </td>
+                    <td>
+                        （美）布拉德利（Bradley,J.C.），（美）米尔斯保夫（Millspaugh,A.C.）  著，徐洸，杨俊  译
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        封面：
+                    </td>
+                    <td>
+                        <img src="/images/BookCovers/9787302143536.jpg" alt="封面" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        出版日期：
+                    </td>
+                    <td>
+                        2007-01-01
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价格：
+                    </td>
+                    <td>
+                        69.90
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td style="text-align: left;">
+                        本书是由畅销书作家Bradley和Millspaugh编著的一本优秀教程，旨在帮助学生掌握Viusal Basic编程技术。<br>    本书在完善原理知识的基础上，补充和改进了一些应用实例，并着重介绍了Visual Basic 2005的新特性，如泛型和Web Master页面等。<br>    本书特色：<br>    介绍了Viusal Basic中全新的数据库访问组件，包括存储过程、新的Data Sources窗口、连接数据源的新技术和新的数据绑定控件。<br>    每一章都包含一个完整的编程示例，从开始的问题陈述到设计解决方案，都进行了分析。<br>    展示了新的IDE特性，包括类图、可简化应用程序的数据源设置的Data Sources窗口、智能标记、调试异常的Exception Assistant，以及窗体体计器中新增的捕捉线。<br>    新的内置Web服务器不再需要使用IIS进行Web开发，极大地简化了可移式Web应用程序的构建，并允许在Web应用程序中进行数据库访问。<br>    要了解本书的更多信息，可访问本书的网站www.mhhe.com/bradleyadv2e。本书的相关学习资料可访问www.tupwk.com.cn/downpage.
+                    </td>
+                </tr>
+            </table>
+            
+                <a href="/Member/Cart.aspx?id=5954">
+                    <img border="0" src="/Images/sale.gif" alt="购买" /></a>
+        </div>
+        <div id="comments" style="width: 750px; text-align: left;">
+        </div>
+        <div style="width: 750px; text-align: left;">
+            <p>
+                评论内容：
+            </p>
+            <textarea cols="60" rows="10" id="txtComment"></textarea>
+            <p>
+                <input type="button" value="提交评论" id="btnSubComment" />&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    id="msg"></span></p>
+        </div>
+        <div id="footer" style="clear: both; position: relative; bottom: 0px">
+            <table border="0" width="100%" class="categories1">
+                <tr>
+                    <td align="center">
+                        <ul>
+                            <li><a href='#'>关于我们王府井书店><a href='#'>关于我们王府井书店</li>
+                            <li><a href="#">书店营业时间：9：30-21：00 </a></li>
+                            <li><a href="#" target="_blank">
+                                <img src="/images/logo123x40.jpg" width="123" height="40" border="0">
+                            </a><a href="#" target="_blank">
+                                <img border="0" src="/Images/kaixin.jpg">
+                            </a></li>
+                            <li>&nbsp;<span lang="zh-cn"><a title="京ICP备08001692号" href="http://www.miibeian.gov.cn">京ICP备08987373号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

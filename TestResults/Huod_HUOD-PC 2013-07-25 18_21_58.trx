@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="12cbf9bf-ed0d-41d7-b9a9-513b12326b26" name="Huod@HUOD-PC 2013-07-25 18:21:58" runUser="Huod-PC\Huod" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="708a07a8-1a97-4633-9eaa-7b4c8ee97756">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment userDeploymentRoot="E:\Projects\网上图书商城\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Huod_HUOD-PC 2013-07-25 18_21_58">
+      <DeploymentItem filename="E:\Projects\网上图书商城\Lib\Microsoft.Web.UI.WebControls.dll" />
+      <DeploymentItem filename="E:\Projects\网上图书商城\Web\bin\BookShop.Web.dll" />
+      <DeploymentItem filename="E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.BLL.dll" />
+      <DeploymentItem filename="E:\Projects\网上图书商城\Lib\Maticsoft.Common.dll" />
+      <DeploymentItem filename="E:\Projects\网上图书商城\Model\bin\Debug\BookShop.Model.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-07-25T18:21:58.5032951+08:00" queuing="2013-07-25T18:21:59.9332971+08:00" start="2013-07-25T18:22:00.1432974+08:00" finish="2013-07-25T18:22:01.5932994+08:00" />
+  <ResultSummary outcome="Inconclusive">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="1" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetStrMD5Test" storage="e:\projects\网上图书商城\testproject\bin\debug\testproject.dll" id="6c483951-f6d5-65b1-2ad3-88cfcbc0b69d">
+      <Execution id="9954ce70-9033-4026-94c5-375fe2707677" />
+      <TestMethod codeBase="E:/Projects/网上图书商城/TestProject/bin/Debug/TestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject.WebCommonTest, TestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStrMD5Test" />
+      <AspNet webSiteUrl="http://localhost:12358/">
+        <Host pathToWebApp="E:\Projects\网上图书商城\Web" webAppRoot="/" />
+      </AspNet>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="6c483951-f6d5-65b1-2ad3-88cfcbc0b69d" executionId="9954ce70-9033-4026-94c5-375fe2707677" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9954ce70-9033-4026-94c5-375fe2707677" testId="6c483951-f6d5-65b1-2ad3-88cfcbc0b69d" testName="GetStrMD5Test" computerName="HUOD-PC" duration="00:00:00.0259515" startTime="2013-07-25T18:22:00.7232982+08:00" endTime="2013-07-25T18:22:01.5532994+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9954ce70-9033-4026-94c5-375fe2707677">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive 失败。验证此测试方法的正确性。</Message>
+          <StackTrace>   在 TestProject.WebCommonTest.GetStrMD5Test() 位置 E:\Projects\网上图书商城\TestProject\WebCommonTest.cs:行号 85
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>More Exceptional C++中文版</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592"
+        name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/Css/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
+    <script src="/js/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComments();
+
+            $('#btnSubComment').click(function () {
+                addComment();
+            });
+        });
+
+        function addComment() {
+            if ($('#txtComment').val() != '') {
+                var comment = $('#txtComment').val();
+                $.post("/ashx/BookComment.ashx", { action: 'add', comment: comment, bookId: 5082 }, function (data) {
+                    if (data == "yes") {
+                        $('#msg').text('发表评论成功！').css('color', 'blue');
+                        $('#txtComment').val('');
+                        loadComments();
+                    }
+                    else {
+                        $('#msg').text('发表评论失败！').css('color', 'red');
+                    }
+                });
+            }
+            else {
+                $('#msg').text('评论内容不能为空！').css('color', 'red');
+            }
+        }
+
+        function loadComments() {
+            $.post("/ashx/BookComment.ashx", { action: 'load', bookId: 5082 }, function (data) {
+                $('#comments').html('');
+                var list = $.parseJSON(data);
+                if (list.length > 0) {
+                    $('<strong>评论列表：</strong>').appendTo('#comments');
+                    $('<hr color="black" />').appendTo('#comments');
+                    for (var i = 0; i < list.length; i++) {
+                        $('<div>#' + (i + 1) + '楼 ' + list[i].CreateDateTime + ' 评论：</div>').appendTo('#comments');
+                        $('<div style="margin:5px auto;">' + list[i].Msg + '</div>').appendTo('#comments');
+                        $('<hr color="#F5983E" noshade="noshade"/>').appendTo('#comments');
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 750px; height: 27px;">
+                <span class="l"><a href="javascript:void(0)" onclick="window.external.addFavorite('http://localhost:12358/BookList.aspx','网上图书商城')">
+                    收藏本站</a></span> <span class="r">您好！欢迎来到网上图书商城！&nbsp; <a href="/Member/login.aspx">[登录]</a>&nbsp;
+                        <a href="/Member/register.aspx">[免费注册]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/OrderInfo.aspx">我的订单</a>
+                    </span>
+            </div>
+        </div>
+        <div style="width: 750px;">
+            <img src="/images/集团网站1.jpg" width="750px" height="93" /></div>
+        <div id="tabsI" style="width: 750px; height: 32px">
+            <ul>
+                <!-- CSS Tabs -->
+                <li><a href="/booklist.aspx"><span>首页</span></a></li>
+                <li><a href="/booklist.aspx"><span>推荐图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>最新图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>热门图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的购物车</span></a></li>
+                <li><a href="/booklist.aspx"><span>购书流程</span></a></li>
+                <li><a href="/booklist.aspx"><span>网站留言</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的留言</span></a></li>
+            </ul>
+        </div>
+        <div id="main_box" style="position: relative; margin-top: 20px; margin-bottom: 20px;
+            margin-left: auto; margin-right: auto; width: 750px;">
+            <table border="1" width="750px" style="border-collapse: collapse;margin-bottom:10px;">
+                <tr>
+                    <td style="width: 10%;">
+                        书名：
+                    </td>
+                    <td style="width: 70%;">
+                        More Exceptional C++中文版
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        作者：
+                    </td>
+                    <td>
+                        （美）Herb Sutter 著，於春景 译
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        封面：
+                    </td>
+                    <td>
+                        <img src="/images/BookCovers/756092771.jpg" alt="封面" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        出版日期：
+                    </td>
+                    <td>
+                        2002-09-01
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价格：
+                    </td>
+                    <td>
+                        39.80
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td style="text-align: left;">
+                        More Exceptional C++是广受赞誉是Exceptional C++的续篇，它采用了行之有效的“提问/解答”的组织形式，提供了用C++解决现实世界问题的成功策略。根据多年程序开发的实践经验、Herb Sutter向C++程序员提供了久经考验的程序设计技术和行之有效的解决方案，这些技术和方案对设计从小型工程到企业级应用的现代软件系统大有裨益。<br>   围绕着40个编程难题， More Exceptional C++引导你深刻理解成功的C++软件设计和开发中至关重要的原则和议题。本续篇包括一些新的主题，强化了泛型程序设计、内存管理、C++标准库的使用等内容，并涵盖了traits和predicates这样的重要技术。本书还就使用标准容器和算法时应该牢记的准则和要点进行了分析——其它资料很少深入涉及这一主题。<br>    读者可以在本书中找到以下重要问题的解决方案：使用std::map和std::set时会遇到哪些陷阱？如何安全地避免这些陷阱？何种predicates可以安全地和STL一起使用？何种不行？为什么？想通过“与模板协同工作的类型”的能力改变模板自身的行为吗？有什么现有的技术可以写出这种威力强大的通用模板代码？何时应该优化你的代码？如何优化？为什么花哨的优化会（而且的确会）让我们陷入麻烦？如何你是在撰写多线程安全代码，这些问题的某些答案会如何变化？异常安全问题会影响到类的设计吗？或者，它可以只是作为事后的改进手段来使用吗？在结合使用不同供应商提供的基于继承的程序库时，如何避免连体双婴问题？如何安全地使用auto-ptr？如何运用常见的设计模式来改装它，使之消除常见缺陷？可以将auto-ptr用作类的成员吗？在这样做之前，你应该了解些什么？<br>    还有，现代C++中最常见的问题之一：到底在何时使用名字空间？如何使用？<br>    More Exceptional C++是真正的程序员的必读之物，在向你展示如何用C++撰写优质代码的同时，它为你提供了对语言彻底而实用的理解。<br>
+                    </td>
+                </tr>
+            </table>
+            
+                <a href="/Member/Cart.aspx?id=5082">
+                    <img border="0" src="/Images/sale.gif" alt="购买" /></a>
+        </div>
+        <div id="comments" style="width: 750px; text-align: left;">
+        </div>
+        <div style="width: 750px; text-align: left;">
+            <p>
+                评论内容：
+            </p>
+            <textarea cols="60" rows="10" id="txtComment"></textarea>
+            <p>
+                <input type="button" value="提交评论" id="btnSubComment" />&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    id="msg"></span></p>
+        </div>
+        <div id="footer" style="clear: both; position: relative; bottom: 0px">
+            <table border="0" width="100%" class="categories1">
+                <tr>
+                    <td align="center">
+                        <ul>
+                            <li><a href='#'>关于我们王府井书店><a href='#'>关于我们王府井书店</li>
+                            <li><a href="#">书店营业时间：9：30-21：00 </a></li>
+                            <li><a href="#" target="_blank">
+                                <img src="/images/logo123x40.jpg" width="123" height="40" border="0">
+                            </a><a href="#" target="_blank">
+                                <img border="0" src="/Images/kaixin.jpg">
+                            </a></li>
+                            <li>&nbsp;<span lang="zh-cn"><a title="京ICP备08001692号" href="http://www.miibeian.gov.cn">京ICP备08987373号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>COM+和Visual Basic6.0分布式应用程序开发（第二版）（附CD-ROM光盘一张）</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592"
+        name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/Css/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
+    <script src="/js/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComments();
+
+            $('#btnSubComment').click(function () {
+                addComment();
+            });
+        });
+
+        function addComment() {
+            if ($('#txtComment').val() != '') {
+                var comment = $('#txtComment').val();
+                $.post("/ashx/BookComment.ashx", { action: 'add', comment: comment, bookId: 5952 }, function (data) {
+                    if (data == "yes") {
+                        $('#msg').text('发表评论成功！').css('color', 'blue');
+                        $('#txtComment').val('');
+                        loadComments();
+                    }
+                    else {
+                        $('#msg').text('发表评论失败！').css('color', 'red');
+                    }
+                });
+            }
+            else {
+                $('#msg').text('评论内容不能为空！').css('color', 'red');
+            }
+        }
+
+        function loadComments() {
+            $.post("/ashx/BookComment.ashx", { action: 'load', bookId: 5952 }, function (data) {
+                $('#comments').html('');
+                var list = $.parseJSON(data);
+                if (list.length > 0) {
+                    $('<strong>评论列表：</strong>').appendTo('#comments');
+                    $('<hr color="black" />').appendTo('#comments');
+                    for (var i = 0; i < list.length; i++) {
+                        $('<div>#' + (i + 1) + '楼 ' + list[i].CreateDateTime + ' 评论：</div>').appendTo('#comments');
+                        $('<div style="margin:5px auto;">' + list[i].Msg + '</div>').appendTo('#comments');
+                        $('<hr color="#F5983E" noshade="noshade"/>').appendTo('#comments');
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 750px; height: 27px;">
+                <span class="l"><a href="javascript:void(0)" onclick="window.external.addFavorite('http://localhost:12358/BookList.aspx','网上图书商城')">
+                    收藏本站</a></span> <span class="r">您好！欢迎来到网上图书商城！&nbsp; <a href="/Member/login.aspx">[登录]</a>&nbsp;
+                        <a href="/Member/register.aspx">[免费注册]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/OrderInfo.aspx">我的订单</a>
+                    </span>
+            </div>
+        </div>
+        <div style="width: 750px;">
+            <img src="/images/集团网站1.jpg" width="750px" height="93" /></div>
+        <div id="tabsI" style="width: 750px; height: 32px">
+            <ul>
+                <!-- CSS Tabs -->
+                <li><a href="/booklist.aspx"><span>首页</span></a></li>
+                <li><a href="/booklist.aspx"><span>推荐图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>最新图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>热门图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的购物车</span></a></li>
+                <li><a href="/booklist.aspx"><span>购书流程</span></a></li>
+                <li><a href="/booklist.aspx"><span>网站留言</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的留言</span></a></li>
+            </ul>
+        </div>
+        <div id="main_box" style="position: relative; margin-top: 20px; margin-bottom: 20px;
+            margin-left: auto; margin-right: auto; width: 750px;">
+            <table border="1" width="750px" style="border-collapse: collapse;margin-bottom:10px;">
+                <tr>
+                    <td style="width: 10%;">
+                        书名：
+                    </td>
+                    <td style="width: 70%;">
+                        COM+和Visual Basic6.0分布式应用程序开发（第二版）（附CD-ROM光盘一张）
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        作者：
+                    </td>
+                    <td>
+                        （美）蒂蒂森（Pattison,T.）著，莱恩工作室 译
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        封面：
+                    </td>
+                    <td>
+                        <img src="/images/BookCovers/9787301051344.jpg" alt="封面" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        出版日期：
+                    </td>
+                    <td>
+                        2002-12-01
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价格：
+                    </td>
+                    <td>
+                        67.00
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td style="text-align: left;">
+                        应该将你的智慧用于创建自定义的商务逻辑，而不要浪费在编写复杂的基础结构代码上。本书第一版是一本畅销的图书，第二版已将其充分更新，其中包含了被内置到Microsoft Windows 2000操作系统中的分布式应用程序框架——COM+ 1.0。从本书中，您可以获得有关使用Visual Basic开发工具编写软件的专业指导，以将COM+服务用于构建扩展到几千名用户的、强健的多层解决方案。作者Ted Pattison提示了“组件对象模型”（Component Object Model）的内部复杂性，将您需要了解的有关使用COM+和Visual Basic编写程序的知识凝缩到这本精简、实用的书中。<br>    本书包括的主要内容：将基于接口的编程方式的原则——COM/COM+的里程碑——应用于构建大型的、扩展的应用程序；掌握关键的COM概念、包括类的加载、对象激自觉自愿 、远程控制，以及组件版本确定等；使用经过配置的组件，并学习如何在COM+应用程序中共享，例如线程、内存、数据库连接，以及可池化的对象等资源；将您已经了解的有关使用Microsoft Transaction Server（MTS）的编程知识移植到COM+和Windows 2000中；学习事务性编程技术，随着用户数量的增加，保持较高的传输量及较快的响应速度；使用Visual Basic创建可以方便地与Internet Information Server(IIS)和Active Server Pages（ASP）集成到一起，以构建强健的基于Web的解决方案的组件；为您的应用程序添加消息传送和事件通知功能；利用Windows 2000、COM+和IIS中内置的集成的安全性服务。<br>
+                    </td>
+                </tr>
+            </table>
+            
+                <a href="/Member/Cart.aspx?id=5952">
+                    <img border="0" src="/Images/sale.gif" alt="购买" /></a>
+        </div>
+        <div id="comments" style="width: 750px; text-align: left;">
+        </div>
+        <div style="width: 750px; text-align: left;">
+            <p>
+                评论内容：
+            </p>
+            <textarea cols="60" rows="10" id="txtComment"></textarea>
+            <p>
+                <input type="button" value="提交评论" id="btnSubComment" />&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    id="msg"></span></p>
+        </div>
+        <div id="footer" style="clear: both; position: relative; bottom: 0px">
+            <table border="0" width="100%" class="categories1">
+                <tr>
+                    <td align="center">
+                        <ul>
+                            <li><a href='#'>关于我们王府井书店><a href='#'>关于我们王府井书店</li>
+                            <li><a href="#">书店营业时间：9：30-21：00 </a></li>
+                            <li><a href="#" target="_blank">
+                                <img src="/images/logo123x40.jpg" width="123" height="40" border="0">
+                            </a><a href="#" target="_blank">
+                                <img border="0" src="/Images/kaixin.jpg">
+                            </a></li>
+                            <li>&nbsp;<span lang="zh-cn"><a title="京ICP备08001692号" href="http://www.miibeian.gov.cn">京ICP备08987373号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

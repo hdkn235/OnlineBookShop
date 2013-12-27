@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>HTML和XHTML权威指南（第五版）</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592"
+        name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/Css/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
+    <script src="/js/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadComments();
+
+            $('#btnSubComment').click(function () {
+                addComment();
+            });
+        });
+
+        function addComment() {
+            if ($('#txtComment').val() != '') {
+                var comment = $('#txtComment').val();
+                $.post("/ashx/BookComment.ashx", { action: 'add', comment: comment, bookId: 5502 }, function (data) {
+                    if (data == "yes") {
+                        $('#msg').text('发表评论成功！').css('color', 'blue');
+                        $('#txtComment').val('');
+                        loadComments();
+                    }
+                    else {
+                        $('#msg').text('发表评论失败！').css('color', 'red');
+                    }
+                });
+            }
+            else {
+                $('#msg').text('评论内容不能为空！').css('color', 'red');
+            }
+        }
+
+        function loadComments() {
+            $.post("/ashx/BookComment.ashx", { action: 'load', bookId: 5502 }, function (data) {
+                $('#comments').html('');
+                var list = $.parseJSON(data);
+                if (list.length > 0) {
+                    $('<strong>评论列表：</strong>').appendTo('#comments');
+                    $('<hr color="black" />').appendTo('#comments');
+                    for (var i = 0; i < list.length; i++) {
+                        $('<div>#' + (i + 1) + '楼 ' + list[i].CreateDateTime + ' 评论：</div>').appendTo('#comments');
+                        $('<div style="margin:5px auto;">' + list[i].Msg + '</div>').appendTo('#comments');
+                        $('<hr color="#F5983E" noshade="noshade"/>').appendTo('#comments');
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 750px; height: 27px;">
+                <span class="l"><a href="javascript:void(0)" onclick="window.external.addFavorite('http://localhost:12358/BookList.aspx','网上图书商城')">
+                    收藏本站</a></span> <span class="r">您好！欢迎来到网上图书商城！&nbsp; <a href="/Member/login.aspx">[登录]</a>&nbsp;
+                        <a href="/Member/register.aspx">[免费注册]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/OrderInfo.aspx">我的订单</a>
+                    </span>
+            </div>
+        </div>
+        <div style="width: 750px;">
+            <img src="/images/集团网站1.jpg" width="750px" height="93" /></div>
+        <div id="tabsI" style="width: 750px; height: 32px">
+            <ul>
+                <!-- CSS Tabs -->
+                <li><a href="/booklist.aspx"><span>首页</span></a></li>
+                <li><a href="/booklist.aspx"><span>推荐图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>最新图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>热门图书</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的购物车</span></a></li>
+                <li><a href="/booklist.aspx"><span>购书流程</span></a></li>
+                <li><a href="/booklist.aspx"><span>网站留言</span></a></li>
+                <li><a href="/booklist.aspx"><span>我的留言</span></a></li>
+            </ul>
+        </div>
+        <div id="main_box" style="position: relative; margin-top: 20px; margin-bottom: 20px;
+            margin-left: auto; margin-right: auto; width: 750px;">
+            <table border="1" width="750px" style="border-collapse: collapse;margin-bottom:10px;">
+                <tr>
+                    <td style="width: 10%;">
+                        书名：
+                    </td>
+                    <td style="width: 70%;">
+                        HTML和XHTML权威指南（第五版）
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        作者：
+                    </td>
+                    <td>
+                        慕西亚诺（Musciano，C.），肯尼迪（Kennedy，B.） 著，技桥  译
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        封面：
+                    </td>
+                    <td>
+                        <img src="/images/BookCovers/9787302076063.jpg" alt="封面" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        出版日期：
+                    </td>
+                    <td>
+                        2004-06-01
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价格：
+                    </td>
+                    <td>
+                        72.00
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td style="text-align: left;">
+                        HTML！XHTML！级联样式表！编写网页的标准很难整理，因为各种版本的Netscape和Internet Explorer在其实现方式上千差万别。《HTML与XHTML权威指南》将这些标准全部介绍给了读者。本书作者找出了各种标准和浏览器特性，并在创建网页方面为读者提出了很多建议，以便能够被更广泛的浏览者和平台所接受。<br>    学习HTML或XHTML和学习其他任何语言一样。大部分学生都是从示例开始学习的。学习其他人在做什么，这可以使学习过程变得简单而有趣，然而模仿只能达到这种程度。在模仿中容易养成坏习惯，并将它当做好习惯接受。掌握HTML的较好方式是，找一本内容全面的参考书，其中最好涉及到语言的语法、语义和各种变化，以帮助读者区分好的和不好的用法。<br>    本书可从两方面对读者有所帮助：作者详细讲述了两种标准的所有元素，解释了每个元素的工作方式，以及如何与其他元素相互作用。很多有关样式的技巧可帮助读者编写文档，涉及的范围从简单的在线手册到复杂的市场演示，无所不包。书中的几百个示例提供了编写有效的网页并掌握先进特性的模型。<br>    《HTML与XHTML权威指南》一书的新版本包含了最新的HTML、XHTML和CSS2标准，并向读者显示了如何：<br>    ·使用样式表控制文档的外观<br>    ·处理用编程手段生成的HTML<br>    ·创建从简单到复杂的表格<br>    ·使用框架调整文档的布局<br>    ·设计和构建交互式表单及动态文档<br>    ·插入图像、声音文件、视频、applet和JavaScript<br>    ·创建在各种浏览器上都可以正常显示的文档<br>    ·过渡到XHTML<br>    其中还包括一张列出HTML与XHTML标签的快速参考卡片。
+                    </td>
+                </tr>
+            </table>
+            
+                <a href="/Member/Cart.aspx?id=5502">
+                    <img border="0" src="/Images/sale.gif" alt="购买" /></a>
+        </div>
+        <div id="comments" style="width: 750px; text-align: left;">
+        </div>
+        <div style="width: 750px; text-align: left;">
+            <p>
+                评论内容：
+            </p>
+            <textarea cols="60" rows="10" id="txtComment"></textarea>
+            <p>
+                <input type="button" value="提交评论" id="btnSubComment" />&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    id="msg"></span></p>
+        </div>
+        <div id="footer" style="clear: both; position: relative; bottom: 0px">
+            <table border="0" width="100%" class="categories1">
+                <tr>
+                    <td align="center">
+                        <ul>
+                            <li><a href='#'>关于我们王府井书店><a href='#'>关于我们王府井书店</li>
+                            <li><a href="#">书店营业时间：9：30-21：00 </a></li>
+                            <li><a href="#" target="_blank">
+                                <img src="/images/logo123x40.jpg" width="123" height="40" border="0">
+                            </a><a href="#" target="_blank">
+                                <img border="0" src="/Images/kaixin.jpg">
+                            </a></li>
+                            <li>&nbsp;<span lang="zh-cn"><a title="京ICP备08001692号" href="http://www.miibeian.gov.cn">京ICP备08987373号</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    </form>
+</body>
+</html>

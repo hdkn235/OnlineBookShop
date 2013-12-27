@@ -1,0 +1,14 @@
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.BLL.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.BLL.pdb
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.DAL.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.Model.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\Maticsoft.Common.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.DBUtility.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\MySql.Data.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\System.Data.SQLite.dll
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.DAL.pdb
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.Model.pdb
+E:\Projects\网上图书商城\BLL\bin\Debug\BookShop.DBUtility.pdb
+E:\Projects\网上图书商城\BLL\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\网上图书商城\BLL\obj\Debug\BookShop.BLL.dll
+E:\Projects\网上图书商城\BLL\obj\Debug\BookShop.BLL.pdb

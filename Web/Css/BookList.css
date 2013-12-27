@@ -1,0 +1,29 @@
+﻿.pageButton
+{
+	border-right: seagreen 1px solid;
+	border-top: seagreen 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: seagreen 1px solid;
+	width: 57px;
+	color: black;
+	border-bottom: seagreen 1px solid;
+	height: 20px;
+	background-color: #c0ffc0;
+	cursor: pointer;
+}
+.orderButton
+{
+	border-right: seagreen 1px solid;
+	border-top: seagreen 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: seagreen 1px solid;
+	width: 65px;
+	color: black;
+	border-bottom: seagreen 1px solid;
+	height: 20px;
+	background-color: #c0ffc0;
+	cursor: pointer;
+}
+
